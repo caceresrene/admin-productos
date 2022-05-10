@@ -23,7 +23,8 @@ const Product = () => {
 		<div className='max-w-2xl mx-auto my-8 flex flex-col items-center'>
 			<h1 className='text-2xl font-bold'>{product.name}</h1>
 			<p>Price: {product.price}$</p>
-			{product.description}
+			<p>{product.description}</p>
+			<button onClick={() => navigate('/')} className='underline hover:text-blue-500'>go back</button>
 		</div>
 	);
 };

@@ -1,22 +1,27 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 import React, { useState } from 'react';
 
 const CreateForm = () => {
+	let navigate = useNavigate();
+
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState('');
 	const [description, setDescription] = useState('');
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		axios.post('http://localhost:8000/api/products', {
+		const { data } = await axios.post('http://localhost:8000/api/products', {
 			name,
 			price,
 			description,
 		});
+		navigate(`/${data._id}`);
 	};
 
 	return (
-		<form className='flex flex-col items-center gap-2'>
+		<form className='flex flex-col items-center gap-2' onSubmit={handleSubmit}>
 			<h1 className='font-bold text-2xl'>Product Manager</h1>
 			<div className='space-x-4'>
 				<label htmlFor='name'>Name</label>
@@ -50,10 +55,7 @@ const CreateForm = () => {
 				value={description}
 				onChange={(e) => setDescription(e.target.value)}
 			></textarea>
-			<button
-				onClick={handleSubmit}
-				className='border border-gray-500 rounded w-64 hover:bg-gray-500 hover:text-white'
-			>
+			<button className='border border-gray-500 rounded w-64 hover:bg-gray-500 hover:text-white'>
 				Create
 			</button>
 		</form>
