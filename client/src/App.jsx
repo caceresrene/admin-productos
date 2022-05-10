@@ -1,10 +1,15 @@
-import CreateForm from './components/CreateForm.jsx';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Main from './pages/Main';
+import Product from './pages/Product';
 
 function App() {
 	return (
-		<main className='max-w-2xl mx-auto my-8'>
-			<CreateForm />
-		</main>
+		<Router>
+			<Routes>
+				<Route path='/' element={<Main />} />
+				<Route path='/:id' element={<Product />} />
+			</Routes>
+		</Router>
 	);
 }
 

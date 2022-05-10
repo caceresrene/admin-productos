@@ -17,7 +17,7 @@ const CreateForm = () => {
 
 	return (
 		<form className='flex flex-col items-center gap-2'>
-			<h1 className='font-bold text-xl'>Product Manager</h1>
+			<h1 className='font-bold text-2xl'>Product Manager</h1>
 			<div className='space-x-4'>
 				<label htmlFor='name'>Name</label>
 				<input
